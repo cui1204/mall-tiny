@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.macro.mall.tiny.modules.dms.mapper.DmsQuestionMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.macro.mall.tiny.modules.dms.model.DmsQuestion">
+        <id column="id" property="id" />
+        <result column="category_id" property="categoryId" />
+        <result column="question" property="question" />
+        <result column="answer" property="answer" />
+        <result column="result_id" property="resultId" />
+        <result column="is_judgment" property="isJudgment" />
+        <result column="create_at" property="createAt" />
+        <result column="update_at" property="updateAt" />
+    </resultMap>
+
+    <select id="getQuestionList" resultType="com.macro.mall.tiny.modules.dms.model.DmsQuestion"  flushCache="true">
+        SELECT * FROM dms_question ORDER BY RAND() LIMIT ${num}
+    </select>
+</mapper>
