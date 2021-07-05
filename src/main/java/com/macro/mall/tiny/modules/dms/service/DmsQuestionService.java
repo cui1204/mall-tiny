@@ -24,7 +24,7 @@ public interface DmsQuestionService extends IService<DmsQuestion> {
     /**
      * 根据关键字分页查询题目
      */
-    Page<DmsQuestion> list(String keyword, Integer pageSize, Integer pageNum);
+    Page<DmsQuestion> list(Long categoryId, String keyword, Integer pageSize, Integer pageNum);
 
 
     /**

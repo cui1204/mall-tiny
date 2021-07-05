@@ -24,7 +24,7 @@ import java.util.List;
  */
 @RestController
 @Api(tags = "DmsQuestionController", description = "题库管理")
-@RequestMapping("/dms/dmsQuestion")
+@RequestMapping("/question")
 public class DmsQuestionController {
     @Autowired
     private DmsQuestionService questionService;
@@ -77,10 +77,11 @@ public class DmsQuestionController {
     @ApiOperation("分页查询题目")
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     @ResponseBody
-    public CommonResult<CommonPage<DmsQuestion>> list(@RequestParam(value = "keyword", required = false) String keyword,
+    public CommonResult<CommonPage<DmsQuestion>> list(@RequestParam(required = false) Long categoryId,
+                                                  @RequestParam(value = "keyword", required = false) String keyword,
                                                   @RequestParam(value = "pageSize", defaultValue = "5") Integer pageSize,
                                                   @RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum) {
-        Page<DmsQuestion> questionList = questionService.list(keyword, pageSize, pageNum);
+        Page<DmsQuestion> questionList = questionService.list(categoryId,keyword, pageSize, pageNum);
         return CommonResult.success(CommonPage.restPage(questionList));
     }
 

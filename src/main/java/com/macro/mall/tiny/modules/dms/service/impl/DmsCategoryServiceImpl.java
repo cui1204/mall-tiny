@@ -25,7 +25,7 @@ public class DmsCategoryServiceImpl extends ServiceImpl<DmsCategoryMapper, DmsCa
     @Override
     public List<DmsCategory> listAll() {
         QueryWrapper<DmsCategory> wrapper = new QueryWrapper<>();
-        wrapper.lambda().orderByDesc(DmsCategory::getId);
+        wrapper.lambda().orderByAsc(DmsCategory::getId);
         return list(wrapper);
     }
 

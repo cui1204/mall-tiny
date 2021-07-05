@@ -15,10 +15,10 @@ public class DmsQuestionParam {
     private Long categoryId;
     @NotEmpty
     @ApiModelProperty(value = "题目正文")
-    private String question;
+    private String content;
     @NotEmpty
     @ApiModelProperty(value = "答案选项A|B|C|D")
-    private String answer;
+    private String optional;
     @NotEmpty
     @ApiModelProperty(value = "正确答案索引，如果是判断题则为1")
     private Integer resultId;

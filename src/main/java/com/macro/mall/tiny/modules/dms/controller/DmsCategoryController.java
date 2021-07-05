@@ -22,7 +22,7 @@ import java.util.List;
  */
 @RestController
 @Api(tags = "DmsCategoryController", description = "题目资源分类管理")
-@RequestMapping("/dms/dmsCategory")
+@RequestMapping("/questionCategory")
 public class DmsCategoryController {
     @Autowired
     private DmsCategoryService dmsCategoryService;

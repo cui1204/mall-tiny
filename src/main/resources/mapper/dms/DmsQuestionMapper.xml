@@ -6,8 +6,8 @@
     <resultMap id="BaseResultMap" type="com.macro.mall.tiny.modules.dms.model.DmsQuestion">
         <id column="id" property="id" />
         <result column="category_id" property="categoryId" />
-        <result column="question" property="question" />
-        <result column="answer" property="answer" />
+        <result column="content" property="content" />
+        <result column="optional" property="optional" />
         <result column="result_id" property="resultId" />
         <result column="is_judgment" property="isJudgment" />
         <result column="create_at" property="createAt" />

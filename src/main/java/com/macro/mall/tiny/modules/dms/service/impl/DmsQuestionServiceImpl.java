@@ -9,6 +9,7 @@ import com.macro.mall.tiny.modules.dms.model.DmsQuestion;
 import com.macro.mall.tiny.modules.dms.mapper.DmsQuestionMapper;
 import com.macro.mall.tiny.modules.dms.service.DmsQuestionService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.macro.mall.tiny.modules.ums.model.UmsResource;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -43,12 +44,15 @@ public class DmsQuestionServiceImpl extends ServiceImpl<DmsQuestionMapper, DmsQu
     }
 
     @Override
-    public Page<DmsQuestion> list(String keyword, Integer pageSize, Integer pageNum) {
+    public Page<DmsQuestion> list(Long categoryId, String keyword, Integer pageSize, Integer pageNum) {
         Page<DmsQuestion> page = new Page<>(pageNum,pageSize);
         QueryWrapper<DmsQuestion> wrapper = new QueryWrapper<>();
         LambdaQueryWrapper<DmsQuestion> lambda = wrapper.lambda();
+        if(categoryId!=null){
+            lambda.eq(DmsQuestion::getCategoryId,categoryId);
+        }
         if(StrUtil.isNotEmpty(keyword)){
-            lambda.like(DmsQuestion::getQuestion,keyword);
+            lambda.like(DmsQuestion::getContent,keyword);
         }
         return page(page,wrapper);
     }
